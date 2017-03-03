@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   transitioning: false,
-  current: {}
+  last: {}
 }
 
 export const routerReducer = (state = initialState, action) => {
@@ -21,7 +21,7 @@ export const routerReducer = (state = initialState, action) => {
     case FINISH_TRANSITION: {
       return {
         transitioning: false,
-        last: action.transition.to()
+        last: action.transition
       }
     }
     case IGNORED_TRANSITION: {
