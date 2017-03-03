@@ -48,3 +48,12 @@ const plugins = [
   <UIView />
 </UIRouter>
 ```
+
+## Building the library
+
+The package is not published to npm yet, so you need to compile it yourself and create a `symlink` or use `npm link`/`yarn link`. To build the library just install the dependencies and run the `build` script:
+
+```bash
+yarn install
+yarn build
+```
