@@ -1,0 +1,26 @@
+{
+  "name": "ui-router-redux",
+  "version": "0.1.0",
+  "description": "Simple Redux bindings for UI-Router",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "jsnext:main": "lib-esm/index.js",
+  "scripts": {
+    "clean": "shx rm -rf _bundles lib lib-esm build",
+    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && NODE_ENV=production webpack"
+  },
+  "author": "Marco Botto",
+  "license": "MIT",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.0.0-beta.18",
+    "jest": "^18.1.0",
+    "redux": "^3.6.0",
+    "shelljs": "^0.7.6",
+    "shx": "^0.2.2",
+    "ts-jest": "^18.0.1",
+    "typescript": "^2.1.5",
+    "ui-router-core": "^3.1.0",
+    "webpack": "2.2.0-rc.4"
+  },
+  "dependencies": {}
+}
