@@ -1,4 +1,4 @@
-import { UIRouter } from 'ui-router-core';
+import { UIRouter } from '@uirouter/core';
 import { Store } from 'redux';
 import { ReduxPlugin } from './interface';
 

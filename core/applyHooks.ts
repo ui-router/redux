@@ -1,8 +1,8 @@
 /**
   * @module core
   */ /** */
-import { UIRouter, Transition, HookResult, TransitionHookFn, State} from 'ui-router-core';
-import { Rejection, RejectType } from 'ui-router-core';
+import { UIRouter, Transition, HookResult, TransitionHookFn} from '@uirouter/core';
+import { Rejection, RejectType } from '@uirouter/core';
 import { Store, Action } from 'redux';
 
 import {
