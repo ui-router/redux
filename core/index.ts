@@ -1,2 +1,2 @@
-export {createReduxPlugin} from './reduxPlugin';
-export {routerReducer} from './reducer';
+export { createReduxPlugin } from './reduxPlugin';
+export { routerReducer } from './reducer';

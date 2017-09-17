@@ -1,7 +1,12 @@
 /**
   * @module core
   */ /** */
-import { UIRouter, Transition, HookResult, TransitionHookFn} from '@uirouter/core';
+import {
+  UIRouter,
+  Transition,
+  HookResult,
+  TransitionHookFn,
+} from '@uirouter/core';
 import { Rejection, RejectType } from '@uirouter/core';
 import { Store, Action } from 'redux';
 
@@ -9,7 +14,7 @@ import {
   START_TRANSITION,
   IGNORED_TRANSITION,
   REDIRECTED_TRANSITION,
-  FINISH_TRANSITION
+  FINISH_TRANSITION,
 } from './actions';
 
 /** @hidden */
@@ -27,24 +32,31 @@ const noop = () => {};
  * @param store The redux store
  * @param trans The Transition
  */
-function dispatch (event: string, store: Store<any>, trans: Transition): TransitionHookFn {
-  return function () {
+function dispatch(
+  event: string,
+  store: Store<any>,
+  trans: Transition
+): TransitionHookFn {
+  return function() {
     store.dispatch({ type: event, transition: trans });
-  }
+  };
 }
 
-function handleTransitionError (trans: Transition, store: Store<any>): (err: Rejection) => void {
-  return function (err: Rejection) {
+function handleTransitionError(
+  trans: Transition,
+  store: Store<any>
+): (err: Rejection) => void {
+  return function(err: Rejection) {
     let dispatcher;
-    if(err.type === RejectType.SUPERSEDED && err.redirected === true) {
+    if (err.type === RejectType.SUPERSEDED && err.redirected === true) {
       dispatcher = dispatch(REDIRECTED_TRANSITION, store, trans);
-    } else if (err.type = RejectType.IGNORED) {
+    } else if ((err.type = RejectType.IGNORED)) {
       dispatcher = dispatch(IGNORED_TRANSITION, store, trans);
     } else {
       dispatcher = noop;
     }
     dispatcher();
-  }
+  };
 }
 
 /**
@@ -56,9 +68,8 @@ function handleTransitionError (trans: Transition, store: Store<any>): (err: Rej
  * @param store The Redux store
  * @returns A function for removing the event listeners
  */
-export function applyHooks (router: UIRouter, store: Store<any>): Function {
-
-  const {transitionService} = router;
+export function applyHooks(router: UIRouter, store: Store<any>): Function {
+  const { transitionService } = router;
   const removeHooksFunctions: Function[] = [];
 
   const removeMainHook = transitionService.onBefore({}, (trans: Transition) => {
@@ -72,8 +83,8 @@ export function applyHooks (router: UIRouter, store: Store<any>): Function {
     trans.promise.then(noop, handleTransitionError(trans, store));
   });
 
-  return function () {
+  return function() {
     removeMainHook();
     removeHooksFunctions.forEach(fn => fn());
-  }
+  };
 }

@@ -8,6 +8,6 @@ export const triggerTransition = (to, params) => {
   return {
     type: TRIGGER_TRANSITION,
     to,
-    params
-  }
-}
+    params,
+  };
+};

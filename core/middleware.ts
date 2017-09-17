@@ -1,4 +1,4 @@
-import {TRIGGER_TRANSITION} from './actions';
+import { TRIGGER_TRANSITION } from './actions';
 
 export default function routerMiddleware(router) {
   return () => next => action => {
@@ -8,5 +8,5 @@ export default function routerMiddleware(router) {
 
     const { to, params } = action;
     // TODO: trigger transition
-  }
+  };
 }
