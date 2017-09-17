@@ -3,8 +3,8 @@ var webpack = require("webpack");
 
 var config = {
   entry: {
-    "ui-router-redux": ["./src/index.ts"],
-    "ui-router-redux.min": ["./src/index.ts"]
+    "uirouter-redux": ["./core/index.ts"],
+    "uirouter-redux.min": ["./core/index.ts"]
   },
   output: {
     path: path.resolve(__dirname, "_bundles"),
@@ -14,10 +14,7 @@ var config = {
     umdNamedDefine: true
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
-    alias: {
-      "ui-router-redux": "/Volumes/FILES/github/elboman/ui-router-redux/lib"
-    }
+    extensions: [".ts", ".tsx", ".js"]
   },
   devtool: 'source-map',
   plugins: [
