@@ -1,8 +1,8 @@
 import { UIRouter } from '@uirouter/core';
 import { Store } from 'redux';
-import { ReduxPlugin } from './interface';
 
 import { applyHooks } from './applyHooks';
+import { ReduxPlugin } from './interface';
 
 export function reduxPluginFactory(name: string, store: Store<any>) {
   return function(router: UIRouter): ReduxPlugin {

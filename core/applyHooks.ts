@@ -1,21 +1,11 @@
 /**
   * @module core
   */ /** */
-import {
-  UIRouter,
-  Transition,
-  HookResult,
-  TransitionHookFn,
-} from '@uirouter/core';
+import { HookResult, Transition, TransitionHookFn, UIRouter } from '@uirouter/core';
 import { Rejection, RejectType } from '@uirouter/core';
-import { Store, Action } from 'redux';
+import { Store } from 'redux';
 
-import {
-  START_TRANSITION,
-  IGNORED_TRANSITION,
-  REDIRECTED_TRANSITION,
-  FINISH_TRANSITION,
-} from './actions';
+import { FINISH_TRANSITION, IGNORED_TRANSITION, REDIRECTED_TRANSITION, START_TRANSITION } from './actions';
 
 /** @hidden */
 const hookResult: HookResult = true;

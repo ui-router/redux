@@ -1,9 +1,4 @@
-import {
-  START_TRANSITION,
-  IGNORED_TRANSITION,
-  REDIRECTED_TRANSITION,
-  FINISH_TRANSITION,
-} from './actions';
+import { FINISH_TRANSITION, IGNORED_TRANSITION, START_TRANSITION } from './actions';
 
 const initialState = {
   transitioning: false,
