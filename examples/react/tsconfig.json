@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es2015", "dom"],
+    "allowSyntheticDefaultImports": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "declaration": false,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "react": ["../../node_modules/react"],
+      "react-dom": ["../../node_modules/react-dom"],
+      "@uirouter/redux": ["../../core/index.ts"],
+      "@uirouter/redux/react": ["../../react/index.ts"]
+    }
+  },
+  "files": ["./index.tsx"],
+  "compileOnSave": false,
+  "buildOnSave": false
+}

@@ -6,10 +6,13 @@
   "typings": "lib/index.d.ts",
   "jsnext:main": "lib-esm/index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 8000 --config ./example/webpack.config.js --history-api-fallback --content-base example",
-    "prettier": "prettier --single-quote --trailing-comma es5 --write '{core,react,__{tests,mocks}__}/**/*.{js,ts}'",
+    "start":
+      "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 8000 --config ./examples/react/webpack.config.js --history-api-fallback --content-base ./examples/react",
+    "prettier":
+      "prettier --single-quote --trailing-comma es5 --write '{core,react,__{tests,mocks}__}/**/*.{js,ts}'",
     "clean": "shx rm -rf _bundles lib lib-esm build",
-    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && NODE_ENV=production webpack"
+    "build":
+      "npm run clean && tsc && tsc -m es6 --outDir lib-esm && NODE_ENV=production webpack"
   },
   "author": "Marco Botto",
   "license": "MIT",
