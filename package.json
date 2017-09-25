@@ -6,25 +6,32 @@
   "typings": "lib/index.d.ts",
   "jsnext:main": "lib-esm/index.js",
   "scripts": {
-    "prettier":
-      "prettier --single-quote --trailing-comma es5 --write '{core,react,__{tests,mocks}__}/**/*.{js,ts}'",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 8000 --config ./example/webpack.config.js --history-api-fallback --content-base example",
+    "prettier": "prettier --single-quote --trailing-comma es5 --write '{core,react,__{tests,mocks}__}/**/*.{js,ts}'",
     "clean": "shx rm -rf _bundles lib lib-esm build",
-    "build":
-      "npm run clean && tsc && tsc -m es6 --outDir lib-esm && NODE_ENV=production webpack"
+    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && NODE_ENV=production webpack"
   },
   "author": "Marco Botto",
   "license": "MIT",
   "devDependencies": {
+    "@types/react": "^16.0.5",
+    "@types/react-dom": "^15.5.4",
     "@uirouter/core": "^5.0.6",
+    "@uirouter/react": "^0.5.2",
     "awesome-typescript-loader": "^3.2.3",
+    "cross-env": "^5.0.5",
     "jest": "^21.1.0",
     "prettier": "^1.7.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "redux": "^3.7.2",
     "shelljs": "^0.7.8",
     "shx": "^0.2.2",
     "ts-jest": "^21.0.1",
     "typescript": "^2.5.2",
-    "webpack": "^3.6.0"
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
   },
   "dependencies": {}
 }
