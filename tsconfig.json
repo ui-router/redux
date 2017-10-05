@@ -13,7 +13,8 @@
     "jsx": "react"
   },
   "files": [
-    "./core/index.ts"
+    "./core/index.ts",
+    "./react/index.ts"
   ],
   "compileOnSave": false,
   "buildOnSave": false,

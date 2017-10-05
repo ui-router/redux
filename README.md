@@ -34,7 +34,7 @@ Depending on the framework you're using, the initial boilerplate may differ a bi
 ```jsx
 import { pushStateLocationPlugin, UIRouterReact, UIView } from '@uirouter/react';
 import { createRouterMiddleware, routerReducer } from '@uirouter/redux';
-import { ConnectedUIRouter } from '@uirouter/redux/react';
+import { ConnectedUIRouter } from '@uirouter/redux/lib/react';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
 

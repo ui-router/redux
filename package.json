@@ -2,9 +2,9 @@
   "name": "@uirouter/redux",
   "version": "0.1.0",
   "description": "Redux bindings for UI-Router",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "jsnext:main": "lib-esm/index.js",
+  "main": "lib/core/index.js",
+  "typings": "lib/core/index.d.ts",
+  "jsnext:main": "lib-esm/core/index.js",
   "scripts": {
     "start":
       "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 8000 --config ./examples/react/webpack.config.js --history-api-fallback --content-base ./examples/react",
