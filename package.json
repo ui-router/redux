@@ -2,6 +2,16 @@
   "name": "@uirouter/redux",
   "version": "0.1.0",
   "description": "Redux bindings for UI-Router",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ui-router/redux.git"
+  },
+  "author": "Marco Botto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ui-router/redux/issues"
+  },
+  "homepage": "https://github.com/ui-router/redux#readme",
   "main": "lib/core/index.js",
   "typings": "lib/core/index.d.ts",
   "jsnext:main": "lib-esm/core/index.js",
@@ -12,8 +22,6 @@
     "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && NODE_ENV=production webpack",
     "release": "release"
   },
-  "author": "Marco Botto",
-  "license": "MIT",
   "devDependencies": {
     "@types/react": "^16.0.5",
     "@types/react-dom": "^15.5.4",
