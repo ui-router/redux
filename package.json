@@ -6,13 +6,10 @@
   "typings": "lib/core/index.d.ts",
   "jsnext:main": "lib-esm/core/index.js",
   "scripts": {
-    "start":
-      "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 8000 --config ./examples/react/webpack.config.js --history-api-fallback --content-base ./examples/react",
-    "prettier":
-      "prettier --single-quote --trailing-comma es5 --write '{core,react,__{tests,mocks}__}/**/*.{js,ts}'",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 8000 --config ./examples/react/webpack.config.js --history-api-fallback --content-base ./examples/react",
+    "prettier": "prettier --single-quote --trailing-comma es5 --write '{core,react,__{tests,mocks}__}/**/*.{js,ts}'",
     "clean": "shx rm -rf _bundles lib lib-esm build",
-    "build":
-      "npm run clean && tsc && tsc -m es6 --outDir lib-esm && NODE_ENV=production webpack"
+    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && NODE_ENV=production webpack"
   },
   "author": "Marco Botto",
   "license": "MIT",
@@ -20,6 +17,7 @@
     "@types/react": "^16.0.5",
     "@types/react-dom": "^15.5.4",
     "@uirouter/core": "^5.0.6",
+    "@uirouter/publish-scripts": "^2.0.6",
     "@uirouter/react": "^0.5.2",
     "awesome-typescript-loader": "^3.2.3",
     "cross-env": "^5.0.5",
