@@ -2,10 +2,10 @@
 **/webpack.config.js
 **/tsconfig.json
 **/node_modules
-core
-react
-examples
-build
-_doc
+core/
+react/
+examples/
+build/
+_doc/
 .prettierignore
 .prettierrc
