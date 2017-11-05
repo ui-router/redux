@@ -29,6 +29,14 @@ The current framework implementations are:
 
 Depending on the framework you're using, the initial boilerplate may differ a bit.
 
+### Installation
+
+The package is publish on the `npm` repository and can be installed using `yarn` or `npm`.
+
+```
+yarn add @uirouter/redux
+```
+
 ### React
 
 ```jsx
