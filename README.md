@@ -1,5 +1,9 @@
 # UI-Router Redux
 
+<a href="https://www.npmjs.org/package/@uirouter/redux">
+  <img src="https://img.shields.io/npm/v/@uirouter/redux.svg?style=flat-square">
+</a>
+
 Keep UI-Router and Redux state in sync.
 
 ## Introduction
