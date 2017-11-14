@@ -1,8 +1,13 @@
-# UI-Router Redux
-
-<a href="https://www.npmjs.org/package/@uirouter/redux">
-  <img src="https://img.shields.io/npm/v/@uirouter/redux.svg?style=flat-square">
-</a>
+<h1>
+  UI-Router Redux
+  &nbsp;
+  <a href="https://www.npmjs.org/package/@uirouter/redux">
+    <img src="https://img.shields.io/npm/v/@uirouter/redux.svg?style=flat-square">
+  </a>
+  <a href="https://travis-ci.org/ui-router/redux">
+    <img src="https://img.shields.io/travis/ui-router/redux/master.svg?style=flat-square">
+  </a>
+</h1>
 
 Keep UI-Router and Redux state in sync.
 
