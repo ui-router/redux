@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "8.7"
+
+script:
+  - yarn test:ci
+
+git:
+  depth: 10
+
+notifications:
+  slack: angularbuddies:b6leQM9gkBCW0S7MNDsELpqU
