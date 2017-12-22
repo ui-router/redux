@@ -13,6 +13,8 @@ Keep UI-Router and Redux state in sync.
 
 ## Introduction
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ui-router/redux.svg)](https://greenkeeper.io/)
+
 UI-Router works well combined with Redux.
 You just need to `connect()` your routed components and they can access the application state as you would expect, as well as dispatch actions.
 
