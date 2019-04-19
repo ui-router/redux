@@ -25,16 +25,16 @@
     "release": "release"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.11",
     "@types/react": "^16.0.5",
     "@types/react-dom": "^16.8.4",
-    "@types/react-redux": "^7.0.7",
+    "@types/react-redux": "^7.0.8",
     "@uirouter/core": "^5.0.6",
     "@uirouter/publish-scripts": "^2.0.6",
     "@uirouter/react": "^0.8.9",
     "awesome-typescript-loader": "^5.2.1",
     "cross-env": "^5.0.5",
     "enzyme": "^3.1.1",
-    "enzyme-adapter-react-15": "^1.0.5",
     "enzyme-to-json": "^3.2.1",
     "jest": "^24.7.1",
     "prettier": "^1.7.0",
@@ -55,5 +55,7 @@
   "peerDependencies": {
     "@uirouter/core": ">=5.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "enzyme-adapter-react-16": "^1.12.1"
+  }
 }
