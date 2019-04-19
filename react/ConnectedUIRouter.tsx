@@ -1,12 +1,12 @@
-import { servicesPlugin, UIRouter, UIRouterProps } from '@uirouter/react';
+import { servicesPlugin, UIRouter, UIRouterProps, UIRouterReact } from '@uirouter/react';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { createReduxPlugin } from '../core';
+import { createReduxPlugin, ReduxPluginApplyFn } from '../core';
 
 export class ConnectedUIRouter extends React.Component<UIRouterProps, any> {
-  reduxPlugin;
-  router;
+  reduxPlugin: ReduxPluginApplyFn;
+  router: UIRouterReact;
 
   static contextTypes = {
     store: PropTypes.object,
