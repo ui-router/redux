@@ -5,7 +5,13 @@ import { HookResult, Transition, TransitionHookFn, UIRouter } from '@uirouter/co
 import { Rejection, RejectType } from '@uirouter/core';
 import { Store } from 'redux';
 
-import { FINISH_TRANSITION, IGNORED_TRANSITION, REDIRECTED_TRANSITION, START_TRANSITION } from './actions';
+import {
+  FINISH_TRANSITION,
+  IGNORED_TRANSITION,
+  REDIRECTED_TRANSITION,
+  START_TRANSITION,
+  SUCCESS_TRANSITION,
+} from "./actions";
 
 /** @hidden */
 const hookResult: HookResult = true;
@@ -26,7 +32,7 @@ function dispatch(
   event: string,
   store: Store<any>,
   trans: Transition
-): TransitionHookFn {
+): () => void {
   return function() {
     store.dispatch({ type: event, transition: trans });
   };
@@ -66,9 +72,11 @@ export function applyHooks(router: UIRouter, store: Store<any>): Function {
     // Create a hook for the ends of the transition
     const dispatchOnStart = dispatch(START_TRANSITION, store, trans);
     const dispatchOnFinish = dispatch(FINISH_TRANSITION, store, trans);
+    const dispatchOnSuccess = dispatch(SUCCESS_TRANSITION, store, trans);
 
     removeHooksFunctions.push(trans.onStart({}, dispatchOnStart));
     removeHooksFunctions.push(trans.onFinish({}, dispatchOnFinish));
+    removeHooksFunctions.push(trans.onSuccess({}, dispatchOnSuccess));
 
     trans.promise.then(noop, handleTransitionError(trans, store));
   });
