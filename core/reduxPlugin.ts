@@ -1,12 +1,15 @@
-import { UIRouter } from '@uirouter/core';
-import { Store } from 'redux';
+import { UIRouter } from "@uirouter/core";
+import { Store } from "redux";
 
-import { applyHooks } from './applyHooks';
-import { ReduxPlugin } from './interface';
+import { applyHooks } from "./applyHooks";
+import { ReduxPlugin } from "./interface";
 
 export type ReduxPluginApplyFn = (router: UIRouter) => ReduxPlugin;
 
-export function reduxPluginFactory(name: string, store: Store<any>): ReduxPluginApplyFn {
+export function reduxPluginFactory(
+  name: string,
+  store: Store<any>
+): ReduxPluginApplyFn {
   return function(router) {
     // sync should return function to deregister hooks
     const removeHooks = applyHooks(router, store);
@@ -22,5 +25,5 @@ export function reduxPluginFactory(name: string, store: Store<any>): ReduxPlugin
 export const createReduxPlugin: (
   store: Store<any>
 ) => ReduxPluginApplyFn = store => {
-  return reduxPluginFactory('redux', store);
+  return reduxPluginFactory("redux", store);
 };
