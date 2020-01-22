@@ -1,32 +1,43 @@
-import { servicesPlugin, UIRouter, UIRouterProps } from '@uirouter/react';
-import * as PropTypes from 'prop-types';
-import * as React from 'react';
+import { servicesPlugin, UIRouter, UIRouterProps } from "@uirouter/react";
+import { ReactReduxContext } from "react-redux";
+import * as React from "react";
+import { useContext, useRef } from "react";
 
-import { createReduxPlugin } from '../core';
+import { createReduxPlugin } from "../core";
 
-export class ConnectedUIRouter extends React.Component<UIRouterProps, any> {
-  reduxPlugin;
-  router;
+interface ConnectedUIRouterProps extends UIRouterProps {
+  children: React.ReactElement;
+}
 
-  static contextTypes = {
-    store: PropTypes.object,
-  };
+export function ConnectedUIRouter({
+  children,
+  router: routerFromProps,
+  plugins,
+  config,
+  states,
+}: ConnectedUIRouterProps) {
+  const init = useRef(false);
 
-  constructor(props, context) {
-    super(props, context);
-    this.reduxPlugin = createReduxPlugin(context.store);
-    this.router = props.router;
-    this.router.plugin(servicesPlugin);
-    props.plugins.forEach(plugin => this.router.plugin(plugin));
-    this.router.plugin(this.reduxPlugin);
-    if (props.config) props.config(this.router);
-    (props.states || []).forEach(state =>
-      this.router.stateRegistry.register(state)
+  const { store } = useContext(ReactReduxContext);
+  const router = useRef(routerFromProps);
+  const reduxPlugin = useRef(createReduxPlugin(store));
+
+  // let's initialise the plugins and set up the router
+  if (init.current !== true) {
+    // services plugin is necessary for UIRouter to function
+    router.current.plugin(servicesPlugin);
+    // apply all the plugins that are passed via props
+    plugins.forEach(plugin => router.current.plugin(plugin));
+    // apply the newly created redux plugin
+    router.current.plugin(reduxPlugin.current);
+
+    if (config) config(router.current);
+    (states || []).forEach(state =>
+      router.current.stateRegistry.register(state)
     );
+
+    init.current = true;
   }
 
-  render() {
-    const { children } = this.props;
-    return <UIRouter router={this.router}>{children}</UIRouter>;
-  }
+  return <UIRouter router={router.current}>{children}</UIRouter>;
 }

@@ -1,9 +1,9 @@
-import { triggerTransition } from '@uirouter/redux';
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { triggerTransition } from "@uirouter/redux";
+import * as React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import { decrease, increase } from '../redux/actions';
+import { decrease, increase } from "../redux/actions";
 
 type CounterProps = {
   counter: number;
@@ -25,7 +25,7 @@ class Counter extends React.Component<CounterProps, any> {
 
   onClickNavigate = () => {
     const { triggerTransition } = this.props.actions;
-    triggerTransition('home');
+    triggerTransition("home");
   };
 
   render() {
@@ -39,10 +39,10 @@ class Counter extends React.Component<CounterProps, any> {
           <button onClick={this.onClickDecrement}>decrease</button>
         </div>
         <p>
-          Or click{' '}
+          Or click{" "}
           <b>
             <a onClick={this.onClickNavigate}>here</a>
-          </b>{' '}
+          </b>{" "}
           to trigger a transition with a redux action
         </p>
       </div>
@@ -50,7 +50,12 @@ class Counter extends React.Component<CounterProps, any> {
   }
 }
 
-export default connect(
+export default connect<
+  { counter: number },
+  {},
+  {},
+  { counter: { value: number } }
+>(
   state => ({
     counter: state.counter.value,
   }),

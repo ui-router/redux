@@ -1,88 +1,113 @@
-declare var jest, describe, it, expect, beforeEach;
+declare var jest, describe, it, expect;
 
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import {shallow, mount, render} from 'enzyme';
-import { UIRouter, UIRouterReact, ReactStateDeclaration, UIView, memoryLocationPlugin, servicesPlugin } from '@uirouter/react';
+import * as React from "react";
+import { shallow, mount, render } from "enzyme";
+import {
+  UIRouter,
+  UIRouterReact,
+  ReactStateDeclaration,
+  UIView,
+  memoryLocationPlugin,
+  servicesPlugin,
+} from "@uirouter/react";
 
-import { ConnectedUIRouter } from '../index';
+import { ConnectedUIRouter } from "../index";
+import { Provider } from "react-redux";
 
-describe('ConnectedUIRouter Component', () => {
+import { createStore } from "redux";
+
+function reducer(state) {
+  return state;
+}
+
+describe("ConnectedUIRouter Component", () => {
   let wrapper;
   let router;
+  let store;
 
   const stateA = {
-    url: 'someurl',
-    name: 'somename',
-    component: () => <div />
+    url: "someurl",
+    name: "somename",
+    component: () => <div />,
   } as ReactStateDeclaration;
-
-  const context = {
-    store: {}
-  };
 
   let defaultProps = {
     states: [stateA],
     plugins: [memoryLocationPlugin],
   };
 
-  it('should initialize the router correctly', () => {
+  beforeEach(() => {
+    store = createStore(reducer);
+  });
+
+  it("should initialize the router correctly", () => {
     router = new UIRouterReact();
-    wrapper = mount((
-      <ConnectedUIRouter {...defaultProps} router={router}>
-        <UIView />
-      </ConnectedUIRouter>
-    ), { context });
+    wrapper = mount(
+      <Provider store={store}>
+        <ConnectedUIRouter {...defaultProps} router={router}>
+          <UIView />
+        </ConnectedUIRouter>
+      </Provider>
+    );
     const routerComponent = wrapper.find(UIRouter);
     expect(routerComponent.length).toBe(1);
     expect(routerComponent.props().router).toBe(router);
   });
 
-  it('should register the states correctly', () => {
+  it("should register the states correctly", () => {
     router = new UIRouterReact();
-    const spy = jest.spyOn(router.stateRegistry, 'register');
-    wrapper = mount((
-      <ConnectedUIRouter {...defaultProps} router={router}>
-        <UIView />
-      </ConnectedUIRouter>
-    ), { context });
+    const spy = jest.spyOn(router.stateRegistry, "register");
+    wrapper = mount(
+      <Provider store={store}>
+        <ConnectedUIRouter {...defaultProps} router={router}>
+          <UIView />
+        </ConnectedUIRouter>
+      </Provider>
+    );
     expect(spy).toHaveBeenCalledWith(stateA);
   });
 
-  it('should run the config function', () => {
+  it("should run the config function", () => {
     const configFn = jest.fn();
     router = new UIRouterReact();
-    wrapper = mount((
-      <ConnectedUIRouter {...defaultProps} router={router} config={configFn}>
-        <UIView />
-      </ConnectedUIRouter>
-    ), { context });
+    wrapper = mount(
+      <Provider store={store}>
+        <ConnectedUIRouter {...defaultProps} router={router} config={configFn}>
+          <UIView />
+        </ConnectedUIRouter>
+      </Provider>
+    );
     expect(configFn).toHaveBeenCalledWith(router);
   });
 
-  it('should register the correct plugins', () => {
+  it("should register the correct plugins", () => {
     router = new UIRouterReact();
-    const spy = jest.spyOn(router, 'plugin');
-    wrapper = mount((
-      <ConnectedUIRouter {...defaultProps} router={router}>
-        <UIView />
-      </ConnectedUIRouter>
-    ), { context });
-    const reduxPlugin = wrapper.instance().reduxPlugin;
-    expect(spy).toHaveBeenCalledWith(memoryLocationPlugin);
-    expect(spy).toHaveBeenCalledWith(servicesPlugin);
-    expect(spy).toHaveBeenCalledWith(reduxPlugin);
+    const spy = jest.spyOn(router, "plugin");
+    router.wrapper = mount(
+      <Provider store={store}>
+        <ConnectedUIRouter {...defaultProps} router={router}>
+          <UIView />
+        </ConnectedUIRouter>
+      </Provider>
+    );
+
+    const [first, second, third] = router.getPlugin();
+    expect(first.name).toBe("vanilla.services");
+    expect(second.name).toBe("vanilla.memoryLocation");
+    expect(third.name).toBe("redux");
   });
 
-  it('should use store from context for the reduxPlugin', () => {
-    const uiRouterReduxCore = require('../../core');
-    const spy = jest.spyOn(uiRouterReduxCore, 'createReduxPlugin');
+  it("should use store from context for the reduxPlugin", () => {
+    const uiRouterReduxCore = require("../../core");
+    const spy = jest.spyOn(uiRouterReduxCore, "createReduxPlugin");
     router = new UIRouterReact();
-    wrapper = mount((
-      <ConnectedUIRouter {...defaultProps} router={router}>
-        <UIView />
-      </ConnectedUIRouter>
-    ), { context });
-    expect(spy).toHaveBeenCalledWith(context.store);
+    wrapper = mount(
+      <Provider store={store}>
+        <ConnectedUIRouter {...defaultProps} router={router}>
+          <UIView />
+        </ConnectedUIRouter>
+      </Provider>
+    );
+    expect(spy).toHaveBeenCalledWith(store);
   });
 });

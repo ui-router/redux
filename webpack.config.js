@@ -1,5 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
+var TerserPlugin = require('terser-webpack-plugin');
 
 var config = {
   entry: {
@@ -13,20 +14,21 @@ var config = {
     filename: "[name].js",
     libraryTarget: "umd",
     library: "UIRouterRedux",
-    umdNamedDefine: true
+    umdNamedDefine: true,
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"]
+    extensions: [".ts", ".tsx", ".js"],
   },
-  devtool: 'source-map',
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      include: /\.min\.js$/,
-    })
-  ],
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        test: /\.min\.js$/,
+      }),
+    ],
+  },
+  devtool: "source-map",
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.tsx?$/,
         loader: "awesome-typescript-loader",
