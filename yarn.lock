@@ -6,19 +6,10 @@
   version "8.0.47"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.47.tgz#968e596f91acd59069054558a00708c445ca30c2"
 
-"@types/react-dom@^15.5.4":
-  version "15.5.6"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-15.5.6.tgz#7794ff7822882b59b899c30294e1b1e62e97757e"
-  dependencies:
-    "@types/react" "^15"
-
-"@types/react@^15":
-  version "15.6.5"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-15.6.5.tgz#fb23b8d8b7226313b645b6e84fb178976bbfe587"
-
-"@types/react@^16.0.5":
+"@types/react@16.0.20", "@types/react@^16.0.5":
   version "16.0.20"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.20.tgz#dc16feb9c0bdf50e439482c6fd3c43d5a1d9f3b1"
+  integrity sha512-D2pWzyDOKHIIyH75foyXake574e+auUOy1aB9aGEfXBCrl5R7p9E/EuB9ENm5eh+oZt/uXgUBg3SGZDvuNxLUg==
 
 "@uirouter/core@5.0.11", "@uirouter/core@^5.0.6":
   version "5.0.11"

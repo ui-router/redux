@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@types/react": "^16.0.5",
-    "@types/react-dom": "^15.5.4",
     "@uirouter/core": "^5.0.6",
     "@uirouter/publish-scripts": "^2.0.6",
     "@uirouter/react": "^0.5.2",
