@@ -27,7 +27,9 @@ export function ConnectedUIRouter({
     // services plugin is necessary for UIRouter to function
     router.current.plugin(servicesPlugin);
     // apply all the plugins that are passed via props
-    plugins.forEach(plugin => router.current.plugin(plugin));
+    (plugins || []).forEach(
+      plugin => router.current.plugin(plugin)
+    );
     // apply the newly created redux plugin
     router.current.plugin(reduxPlugin.current);
 
