@@ -1,9 +1,9 @@
-import { servicesPlugin, UIRouter, UIRouterProps } from "@uirouter/react";
-import { ReactReduxContext } from "react-redux";
-import * as React from "react";
-import { useContext, useRef } from "react";
+import { servicesPlugin, UIRouter, UIRouterProps } from '@uirouter/react';
+import { ReactReduxContext } from 'react-redux';
+import * as React from 'react';
+import { useContext, useRef } from 'react';
 
-import { createReduxPlugin } from "../core";
+import { createReduxPlugin } from '../core';
 
 interface ConnectedUIRouterProps extends UIRouterProps {
   children: React.ReactElement;
@@ -27,14 +27,12 @@ export function ConnectedUIRouter({
     // services plugin is necessary for UIRouter to function
     router.current.plugin(servicesPlugin);
     // apply all the plugins that are passed via props
-    plugins.forEach(plugin => router.current.plugin(plugin));
+    plugins.forEach((plugin) => router.current.plugin(plugin));
     // apply the newly created redux plugin
     router.current.plugin(reduxPlugin.current);
 
     if (config) config(router.current);
-    (states || []).forEach(state =>
-      router.current.stateRegistry.register(state)
-    );
+    (states || []).forEach((state) => router.current.stateRegistry.register(state));
 
     init.current = true;
   }

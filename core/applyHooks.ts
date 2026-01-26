@@ -1,6 +1,6 @@
 /**
-  * @module core
-  */ /** */
+ * @module core
+ */ /** */
 import { HookResult, Transition, TransitionHookFn, UIRouter } from '@uirouter/core';
 import { Rejection, RejectType } from '@uirouter/core';
 import { Store } from 'redux';
@@ -11,7 +11,7 @@ import {
   REDIRECTED_TRANSITION,
   START_TRANSITION,
   SUCCESS_TRANSITION,
-} from "./actions";
+} from './actions';
 
 /** @hidden */
 const hookResult: HookResult = true;
@@ -28,21 +28,14 @@ const noop = () => {};
  * @param store The redux store
  * @param trans The Transition
  */
-function dispatch(
-  event: string,
-  store: Store<any>,
-  trans: Transition
-): () => void {
-  return function() {
+function dispatch(event: string, store: Store<any>, trans: Transition): () => void {
+  return function () {
     store.dispatch({ type: event, transition: trans });
   };
 }
 
-function handleTransitionError(
-  trans: Transition,
-  store: Store<any>
-): (err: Rejection) => void {
-  return function(err: Rejection) {
+function handleTransitionError(trans: Transition, store: Store<any>): (err: Rejection) => void {
+  return function (err: Rejection) {
     let dispatcher;
     if (err.type === RejectType.SUPERSEDED && err.redirected === true) {
       dispatcher = dispatch(REDIRECTED_TRANSITION, store, trans);
@@ -81,8 +74,8 @@ export function applyHooks(router: UIRouter, store: Store<any>): Function {
     trans.promise.then(noop, handleTransitionError(trans, store));
   });
 
-  return function() {
+  return function () {
     removeMainHook();
-    removeHooksFunctions.forEach(fn => fn());
+    removeHooksFunctions.forEach((fn) => fn());
   };
 }

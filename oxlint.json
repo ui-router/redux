@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-debugger": "error",
+    "no-console": "warn",
+    "eqeqeq": "error"
+  },
+  "ignorePatterns": [
+    "dist/",
+    "node_modules/",
+    "examples/"
+  ]
+}

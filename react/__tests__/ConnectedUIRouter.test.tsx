@@ -1,30 +1,25 @@
-import { vi, describe, beforeEach, afterEach, it, expect } from "vitest";
-import * as React from "react";
-import { render, cleanup } from "@testing-library/react";
-import {
-  UIRouterReact,
-  ReactStateDeclaration,
-  UIView,
-  memoryLocationPlugin,
-} from "@uirouter/react";
+import { vi, describe, beforeEach, afterEach, it, expect } from 'vitest';
+import * as React from 'react';
+import { render, cleanup } from '@testing-library/react';
+import { UIRouterReact, ReactStateDeclaration, UIView, memoryLocationPlugin } from '@uirouter/react';
 
-import { ConnectedUIRouter } from "../index";
-import { Provider } from "react-redux";
+import { ConnectedUIRouter } from '../index';
+import { Provider } from 'react-redux';
 
-import { createStore } from "redux";
-import * as uiRouterReduxCore from "../../core";
+import { createStore } from 'redux';
+import * as uiRouterReduxCore from '../../core';
 
 function reducer(state = {}) {
   return state;
 }
 
-describe("ConnectedUIRouter Component", () => {
+describe('ConnectedUIRouter Component', () => {
   let router: UIRouterReact;
   let store: ReturnType<typeof createStore>;
 
   const stateA = {
-    url: "someurl",
-    name: "somename",
+    url: 'someurl',
+    name: 'somename',
     component: () => <div />,
   } as ReactStateDeclaration;
 
@@ -42,7 +37,7 @@ describe("ConnectedUIRouter Component", () => {
     vi.restoreAllMocks();
   });
 
-  it("should initialize the router correctly", () => {
+  it('should initialize the router correctly', () => {
     router = new UIRouterReact();
     render(
       <Provider store={store}>
@@ -60,9 +55,9 @@ describe("ConnectedUIRouter Component", () => {
     expect(router.stateRegistry.get()).toBeDefined();
   });
 
-  it("should register the states correctly", () => {
+  it('should register the states correctly', () => {
     router = new UIRouterReact();
-    const spy = vi.spyOn(router.stateRegistry, "register");
+    const spy = vi.spyOn(router.stateRegistry, 'register');
     render(
       <Provider store={store}>
         <ConnectedUIRouter {...defaultProps} router={router}>
@@ -73,7 +68,7 @@ describe("ConnectedUIRouter Component", () => {
     expect(spy).toHaveBeenCalledWith(stateA);
   });
 
-  it("should run the config function", () => {
+  it('should run the config function', () => {
     const configFn = vi.fn();
     router = new UIRouterReact();
     render(
@@ -86,9 +81,9 @@ describe("ConnectedUIRouter Component", () => {
     expect(configFn).toHaveBeenCalledWith(router);
   });
 
-  it("should register the correct plugins", () => {
+  it('should register the correct plugins', () => {
     router = new UIRouterReact();
-    const spy = vi.spyOn(router, "plugin");
+    const spy = vi.spyOn(router, 'plugin');
     render(
       <Provider store={store}>
         <ConnectedUIRouter {...defaultProps} router={router}>
@@ -98,13 +93,13 @@ describe("ConnectedUIRouter Component", () => {
     );
 
     const [first, second, third] = router.getPlugin();
-    expect(first.name).toBe("vanilla.services");
-    expect(second.name).toBe("vanilla.memoryLocation");
-    expect(third.name).toBe("redux");
+    expect(first.name).toBe('vanilla.services');
+    expect(second.name).toBe('vanilla.memoryLocation');
+    expect(third.name).toBe('redux');
   });
 
-  it("should use store from context for the reduxPlugin", () => {
-    const spy = vi.spyOn(uiRouterReduxCore, "createReduxPlugin");
+  it('should use store from context for the reduxPlugin', () => {
+    const spy = vi.spyOn(uiRouterReduxCore, 'createReduxPlugin');
     router = new UIRouterReact();
     render(
       <Provider store={store}>

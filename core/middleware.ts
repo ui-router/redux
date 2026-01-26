@@ -3,7 +3,7 @@ import { UIRouter } from '@uirouter/core';
 import { TRIGGER_TRANSITION } from './actions';
 
 export default function createRouterMiddleware(router: UIRouter) {
-  return () => next => action => {
+  return () => (next) => (action) => {
     if (action.type !== TRIGGER_TRANSITION) {
       return next(action);
     }
