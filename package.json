@@ -41,6 +41,7 @@
     "dist"
   ],
   "scripts": {
+    "start": "npm run dev --prefix examples/react",
     "test": "vitest run",
     "test:ci": "vitest run",
     "lint": "oxlint -c oxlint.json core react",

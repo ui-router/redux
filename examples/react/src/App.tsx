@@ -1,26 +1,16 @@
-import {
-  pushStateLocationPlugin,
-  UIRouterReact,
-  UISref,
-  UIView,
-} from "@uirouter/react";
-import { ConnectedUIRouter } from "@uirouter/redux/react";
-import * as React from "react";
-import { Provider } from "react-redux";
+import { pushStateLocationPlugin, UIRouterReact, UISref, UIView } from '@uirouter/react';
+import { ConnectedUIRouter } from '@uirouter/redux/react';
+import { Provider } from 'react-redux';
 
-import createRoutedStore from "./redux/store";
-import states from "./router/states";
+import createRoutedStore from './redux/store';
+import states from './router/states';
 
 const router = new UIRouterReact();
 const store = createRoutedStore(router);
 
 const App = () => (
   <Provider store={store}>
-    <ConnectedUIRouter
-      router={router}
-      plugins={[pushStateLocationPlugin]}
-      states={states}
-    >
+    <ConnectedUIRouter router={router} plugins={[pushStateLocationPlugin]} states={states}>
       <div className="main">
         <nav className="menu">
           <ul>

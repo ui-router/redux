@@ -1,26 +1,19 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "commonjs",
-    "target": "es5",
-    "lib": ["es2015", "dom"],
-    "allowSyntheticDefaultImports": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
-    "declaration": false,
-    "jsx": "react",
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "react": ["../../node_modules/react"],
-      "react-dom": ["../../node_modules/react-dom"],
-      "redux": ["../../node_modules/redux"],
-      "react-redux": ["../../node_modules/react-redux"],
       "@uirouter/redux": ["../../core/index.ts"],
       "@uirouter/redux/react": ["../../react/index.ts"]
     }
   },
-  "files": ["./index.tsx"],
-  "compileOnSave": false,
-  "buildOnSave": false
+  "include": ["**/*.ts", "**/*.tsx"]
 }
