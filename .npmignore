@@ -1,11 +1,11 @@
 .*
-**/webpack.config.js
 **/tsconfig.json
 **/node_modules
 core/
 react/
 examples/
-build/
 _doc/
+*.config.ts
+*.setup.ts
 .prettierignore
 .prettierrc

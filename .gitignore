@@ -3,6 +3,4 @@
 .vscode
 
 node_modules
-_bundles
-lib
-lib-esm
+dist

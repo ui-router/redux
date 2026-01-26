@@ -12,16 +12,40 @@
     "url": "https://github.com/ui-router/redux/issues"
   },
   "homepage": "https://github.com/ui-router/redux#readme",
-  "main": "lib/core/index.js",
-  "typings": "lib/core/index.d.ts",
-  "jsnext:main": "lib-esm/core/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./react": {
+      "import": {
+        "types": "./dist/react.d.mts",
+        "default": "./dist/react.mjs"
+      },
+      "require": {
+        "types": "./dist/react.d.cts",
+        "default": "./dist/react.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 8000 --config ./examples/react/webpack.config.js --history-api-fallback --content-base ./examples/react",
     "test": "vitest run",
     "test:ci": "vitest run",
-    "prettier": "prettier --single-quote --trailing-comma es5 --write '{core,react,__{tests,mocks}__}/**/*.{js,ts}'",
-    "clean": "shx rm -rf _bundles lib lib-esm build",
-    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && NODE_ENV=production webpack",
+    "prettier": "prettier --single-quote --trailing-comma es5 --write '{core,react}/**/*.{js,ts,tsx}'",
+    "clean": "shx rm -rf dist",
+    "build": "npm run clean && tsdown",
     "release": "release"
   },
   "devDependencies": {
@@ -33,8 +57,6 @@
     "@uirouter/core": "=6.0.1",
     "@uirouter/publish-scripts": "^2.5.5",
     "@uirouter/react": "^1.0.0",
-    "awesome-typescript-loader": "^5.2.1",
-    "cross-env": "^6.0.3",
     "jsdom": "^26.0.0",
     "prettier": "^1.19.1",
     "prop-types": "^15.5.10",
@@ -43,13 +65,10 @@
     "react-redux": "^7.1.3",
     "react-test-renderer": "^16.12.0",
     "redux": "^4.0.5",
-    "shelljs": "^0.8.3",
     "shx": "^0.3.2",
-    "typescript": "^3.7.5",
-    "vitest": "^3.0.4",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "tsdown": "^0.20.1",
+    "typescript": "^5.0.0",
+    "vitest": "^3.0.4"
   },
   "peerDependencies": {
     "@uirouter/core": ">=5.0.0"

@@ -1,23 +1,19 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "commonjs",
-    "target": "es5",
-    "lib": [ "es2015", "dom" ],
-    "outDir": "lib",
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2020", "DOM"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "declaration": true,
-    "jsx": "react"
+    "declarationMap": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "outDir": "dist",
+    "rootDir": "."
   },
-  "files": [
-    "./core/index.ts",
-    "./react/index.ts"
-  ],
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "rules": {
-    "indent": [ true, 2 ]
-  }
+  "include": ["core/**/*", "react/**/*"],
+  "exclude": ["node_modules", "dist", "**/__tests__/**"]
 }
