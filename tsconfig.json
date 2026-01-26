@@ -6,7 +6,6 @@
     "lib": [ "es2015", "dom" ],
     "outDir": "lib",
     "allowSyntheticDefaultImports": true,
-    "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "declaration": true,
@@ -19,9 +18,6 @@
   "compileOnSave": false,
   "buildOnSave": false,
   "rules": {
-    "indent": [
-      true,
-      2
-    ]
+    "indent": [ true, 2 ]
   }
 }
